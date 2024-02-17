@@ -288,17 +288,17 @@ const customTooltip = function ({ payload, label, active }) {
 
   return (
     <div className="relative rounded-sm bg-[#d6e9fb] px-4 py-2">
-      <p className="text-center text-xs text-black/60 font-medium">
+      <p className="text-center text-xs text-black/60 font-semibold">
         {label.split(' ')[0]}
       </p>
       <span className="font-bold text-xl text-[#2e5ce5]">
         {' '}
         {Math.abs(num) > 999
-          ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + 'k'
+          ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + 'K'
           : Math.sign(num) * Math.abs(num)}
-        /month{' '}
+        /mon{' '}
       </span>
-      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 transform border-x-8 border-b-0 border-t-8 border-solid border-x-transparent border-t-[#d6e9fb]"></div>
+      <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 transform border-x-8 border-b-0 border-t-8 border-solid border-x-transparent border-t-[#d6e9fb]"></div>
     </div>
   );
 };
@@ -306,20 +306,22 @@ const customTooltip = function ({ payload, label, active }) {
 export default function App() {
   return (
     <main className="min-h-screen bg-[#F5FAFE] mx-4 p-10 font-sans">
-      <div className="border bg-white m-10 py-8 px-6 max-w-[900px] mx-auto shadow-lg">
+      <div className="border bg-white m-10 py-8 px-6 max-w-[900px] mx-auto shadow-lg rounded-md">
         <div className="flex items-center justify-between">
           <div className="px-5">
             <select
               id="countries"
-              className="border border-gray-200 px-2 cursor-pointer text-gray-500 hover:text-gray-900 text-sm  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+              className="border border-[#dbe7ff] px-8 cursor-pointer text-[#a0a2af] hover:text-gray-900 text-sm  focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 "
             >
-              <option className="m" selected>
-                Choose a country
+              <option className="px-4" value="US">
+                All Time
               </option>
-              <option value="US">United States</option>
-              <option value="CA">Canada</option>
-              <option value="FR">France</option>
-              <option value="DE">Germany</option>
+              <option value="US" selected>
+                2 Years
+              </option>
+              <option value="US">1 Year</option>
+              <option value="US">6 Months</option>
+              <option value="US">3 Months</option>
             </select>
           </div>
 
@@ -339,7 +341,7 @@ export default function App() {
           </div>
         </div>
         <AreaChart
-          className="mt-4 w-full h-96"
+          className="my-10 w-full h-96"
           data={chartdata}
           index="date"
           showLegend={false}
